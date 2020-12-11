@@ -1,0 +1,25 @@
+###
+GET http://localhost:3000/employees
+###
+POST http://localhost:3000/employees
+Content-Type: application/json
+
+{
+    "Nombre": "Falopa2",
+    "Apellido": "Falopa2",
+    "Salario": 32322
+}
+###
+GET http://localhost:3000/2
+###
+DELETE  http://localhost:3000/4
+
+###
+PUT http://localhost:3000/1
+Content-Type: application/json
+
+{
+    "Nombre": "Joaquin",
+    "Apellido": "Suarez",
+    "Salario": 40000
+}

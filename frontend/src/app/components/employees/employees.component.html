@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="row">
+        <div class="col s5">
+            <div class="card">
+                <div class="card-content">
+                    <form  #employeeForm="ngForm" (ngSubmit)="saveEmployee(employeeForm)">
+                        <div class="input-field col s12">
+                            <input  type="hidden" 
+                            name="id" 
+                            [(ngModel)]="employee.id" >
+                            
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input  type="text" 
+                                name="nombre" 
+                                [(ngModel)]="employee.nombre" 
+                                placeholder="Enter your name">
+                                <label for="first_name">Name</label>
+                                
+                            </div>
+                            <div class="input-field col s12">
+                                <input  type="text"
+                                        name="apellido" 
+                                        [(ngModel)]="employee.apellido" 
+                                        placeholder="Enter your last name">
+                                        <label for="last_name">Last Name</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input  type="text" 
+                                        name="salario" 
+                                        [(ngModel)]="employee.salario"
+                                        placeholder="Enter your salary">
+                                        <label for="salary">Salary</label>
+                            </div>
+                            <div class="card-action">
+                                <div class="input-field col s12">
+                                    <button class="btn right">Save</button>
+                                    <button class="btn" (click)="resetForm(employeeForm)">Clean </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col s7">
+            <table>
+                <thead>
+                    <th>Name</th>
+                    <th>Last Name</th>
+                    <th>Salary</th>
+                    <th>Operations</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let employee of employeeService.employees ">
+                        <td>{{employee.nombre}}</td>
+                        <td>{{employee.apellido}}</td>
+                        <td>{{employee.salario | currency:'USD':true:'2.2-4'}} </td>
+                        <td>
+                            <a (click)="rellenarCamposFormulario(employee, employeeForm)">
+                                <i class="material-icons">edit</i>
+                            </a>
+                            <a (click)="deleteEmployee(employee, employeeForm )">
+                                <i class="material-icons">delete</i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
